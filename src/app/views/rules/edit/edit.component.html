@@ -1,0 +1,85 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-3 text-left">
+              <button size="sm" class="btn btn-primary" (click)="goBack()">
+                <i class="fa fa-chevron-left"></i>&nbsp;
+                <span class="btn-text">Back</span>
+              </button>
+            </div>
+            <div class="col-6 text-center">
+              <h4>Edit Rule</h4>
+            </div>
+            <div class="col-3 text-right">
+              <app-loading-button
+                (formSubmit)="onSubmit()"
+                text="Update"
+                loadingText="Updating..."
+                buttonSize="lg"
+                buttonIcon="fa fa-check"
+                [isLoading]="isLoading"
+                [isFormInvalid]="rulesForm.invalid"
+              >
+              </app-loading-button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="rulesForm" novalidate>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                  <label>Name *</label>
+                  <input
+                    [class.is-invalid]="name.invalid && name.touched"
+                    formControlName="name"
+                    type="text"
+                    class="form-control"
+                  />
+                  <div *ngIf="name.invalid && name.touched">
+                    <small *ngIf="name.errors?.required" class="text-danger"
+                      >Name is required</small
+                    >
+                    <small *ngIf="name.errors?.maxlength" class="text-danger"
+                      >Maximum allowed 200 characters</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                  <label>Description *</label>
+                  <textarea
+                    [class.is-invalid]="
+                      description.invalid && description.touched
+                    "
+                    formControlName="description"
+                    rows="3"
+                    class="form-control"
+                  ></textarea>
+                  <div *ngIf="description.invalid && description.touched">
+                    <small
+                      *ngIf="description.errors?.required"
+                      class="text-danger"
+                      >Description is required</small
+                    >
+                    <small
+                      *ngIf="description.errors?.maxlength"
+                      class="text-danger"
+                      >Maximum allowed 1000 characters</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

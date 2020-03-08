@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <strong> Rules </strong>
+        <div class="card-header-actions">
+          <button
+            type="button"
+            class="btn btn-sm btn-success"
+            (click)="gotoAddRule()"
+          >
+            <i class="icon-plus"></i>&nbsp;Add
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rule of rulesList; index as i">
+              <td>{{ i+1 }}</td>
+              <td>{{ rule.name }}</td>
+              <td>{{ rule.description }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-warning"
+                  (click)="gotoRuleEdit(rule.id)"
+                >
+                  <i class="icon-pencil"></i>&nbsp;Edit</button
+                >&nbsp;
+                <button type="button" class="btn btn-sm btn-danger" (click)="openModal(rule.id)">
+                  <i class="icon-trash"></i>&nbsp;Delete
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-sm btn-primary" (click)="gotoCreateRule()">
+                  <i class="icon-pencil"></i>&nbsp;View rule
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

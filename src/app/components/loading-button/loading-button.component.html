@@ -1,0 +1,10 @@
+<button
+  [disabled]="isLoading || isFormInvalid"
+  type="submit"
+  class="btn btn-primary"
+  size="buttonSize"
+  (click)="onFormSubmit()"
+>
+  <span *ngIf="isLoading"> <span class="btn-text">{{ loadingText }}</span> &nbsp; <i class="fa fa-spinner fa-spin"></i> </span>
+  <span *ngIf="!isLoading"><i [class]="buttonIcon"></i>&nbsp; <span class="btn-text">{{ text }}</span></span>
+</button>

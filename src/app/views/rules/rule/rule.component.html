@@ -1,0 +1,75 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Rule Engine</span>
+    <span class="example-spacer"></span>
+    <button mat-button color="secondary" matTooltip="Save rule" (click)="saveRule()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="fc-container">
+  <div class="fc-left-pane">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon
+              class="example-icon"
+              aria-hidden="false"
+              aria-label="Enrichment"
+              >playlist_add</mat-icon
+            >
+            Enrichment
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-panel-description>
+          <fc-canvas
+            [model]="enrichmentTypesModel"
+            [selectedObjects]="nodeTypesFlowchartselected"
+            [automaticResize]="false"
+            [dropTargetId]="'fc-target-canvas'"
+          >
+          </fc-canvas>
+        </mat-panel-description>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon
+              class="example-icon"
+              aria-hidden="false"
+              aria-label="Flash"
+              >flash_on</mat-icon
+            >
+            Action
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-panel-description>
+          <fc-canvas
+            [model]="actionTypesModel"
+            [selectedObjects]="nodeTypesFlowchartselected"
+            [automaticResize]="false"
+            [dropTargetId]="'fc-target-canvas'"
+          >
+          </fc-canvas>
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="fc-right-pane">
+    <fc-canvas
+      #fcCanvas
+      id="fc-target-canvas"
+      [model]="model"
+      [selectedObjects]="flowchartselected"
+      [edgeStyle]="flowchartConstants.curvedStyle"
+      [userCallbacks]="callbacks"
+      [automaticResize]="true"
+      [dragAnimation]="flowchartConstants.dragAnimationRepaint"
+    >
+    </fc-canvas>
+  </div>
+</div>

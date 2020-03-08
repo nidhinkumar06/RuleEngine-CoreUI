@@ -1,0 +1,33 @@
+<app-header
+  [navbarBrandRouterLink]="['/rules']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="false"
+  [mobileAsideMenuToggler]="false"
+  [asideMenuToggler]="'lg'">
+  <div class="ml-auto">
+  </div>
+</app-header>
+
+<div class="app-body">
+  <app-sidebar [fixed]="true" [display]="'lg'" [minimized]="minimized" #sidebar (minimizedChange)="toggleMinimize($event)">
+    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebar.minimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  <!-- Main content -->
+  <main class="main">
+    <!-- Breadcrumb -->
+    <cui-breadcrumb>
+      <!-- Breadcrumb Menu-->
+    </cui-breadcrumb>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+<app-footer>
+  <span><a>Rule Engine</a> &copy; 2020</span>
+  <span class="ml-auto">Powered by <a href="https://codingtown.com">CodingTownIndia</a></span>
+</app-footer>

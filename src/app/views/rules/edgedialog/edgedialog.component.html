@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Select Option</h2>
+
+<mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
+  <mat-radio-button value="Yes">Yes</mat-radio-button> &nbsp;
+  <mat-radio-button value="No">No</mat-radio-button>
+</mat-radio-group>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">
+    Close
+  </button>
+   &nbsp;
+  <button class="mat-raised-button mat-primary" (click)="save()">
+    Save
+  </button>
+</mat-dialog-actions>
